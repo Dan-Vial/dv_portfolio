@@ -1,0 +1,21 @@
+@use "../../layout/default/base" as *
+
+.user-avatar
+  display: flex
+  align-items: center
+  gap: 1em
+  @include font(1.1em, 500, $base-color-tertiary)
+  width: min-content
+  text-align: end
+
+  @media (max-width: 700px)
+    @include font(0.8em, 500, $base-color-tertiary)
+
+  &-img
+    border-radius: 4rem
+    background: $base-color-tertiary
+    height: 8rem
+    border: 1px solid $base-color-septenary
+
+    @media (max-width: 700px)
+      height: 5rem

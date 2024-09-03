@@ -1,0 +1,26 @@
+@use "../../layout/default/base" as *
+
+.button
+  display: inline-block
+  text-align: center
+  border-radius: 1em
+  background-color: #ffc107
+  padding: 0.5em
+  border: 3px solid var(--color-primary-bg-1)
+  box-shadow: 3px 3px 3px 3px var(--color-primary-ssg)
+  cursor: pointer
+  transition: all 0.5s ease
+
+  &:hover
+    background-color: var(--color-primary-sg)
+
+  &:active
+    transform: translateY(5px)
+
+  &:focus
+    outline: 3px dotted #ffffff
+    outline-offset: 2px
+
+  &-disabled
+    opacity: 0.5
+    pointer-events: none

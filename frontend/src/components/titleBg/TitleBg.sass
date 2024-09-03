@@ -1,0 +1,44 @@
+@use "../../layout/default/base" as *
+
+.title-bg
+  display: grid
+  grid-auto-columns: 1fr
+  justify-items: center
+  align-content: center
+  position: sticky
+  text-wrap: balance
+  height: 100vh
+  top: 0
+  // mix-blend-mode: darken
+  z-index: -1
+
+  @include font(2em, 700, #ffffff)
+
+  @media (max-width: 900px)
+    height: 111px
+    font-size: 1em
+
+  @media (orientation: portrait)
+    height: 100vh
+
+  &-img
+    height: 100%
+    width: 100%
+    object-fit: cover
+    position: absolute
+    z-index: -1
+    // border-radius: 1rem
+    filter: brightness(70%)
+
+  &-h2
+    margin-left: 1rem
+    margin-right: 1rem
+    @include borderText(2px, $base-color-septenary)
+    border: solid 1px $base-color-quaternary
+    padding: 1em
+    border-radius: 2em .5em
+    background-color: #00000066
+
+  &_error
+    height: 40vh
+    top: 2em

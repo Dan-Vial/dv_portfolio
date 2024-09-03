@@ -1,0 +1,16 @@
+@use "../../layout/default/base" as *
+
+.title-bg-arrow
+  color: $base-color-quinary
+  position: fixed
+  bottom: 0
+  animation: 1s linear 1s infinite arrowanim
+
+@keyframes arrowanim
+  from
+    filter: hue-rotate(0deg)
+    transform: translateY(-1em)
+
+  to
+    filter: hue-rotate(360deg)
+    transform: translateY(0)

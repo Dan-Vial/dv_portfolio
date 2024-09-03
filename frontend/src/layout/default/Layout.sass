@@ -1,0 +1,17 @@
+@use "./base" as *
+
+.layout
+  display: grid
+  min-height: 100%
+
+  &-body
+    display: grid
+    font-family: sans-serif
+    background-color: $base-color-secondary
+    color: $base-color-primary
+    margin: 0
+
+    &-root
+      display: grid
+      grid-template-rows: 1fr auto
+      width: 100%

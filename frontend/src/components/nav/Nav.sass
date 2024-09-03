@@ -1,0 +1,46 @@
+@use "../../layout/default/base" as *
+
+.nav
+  display: flex
+  align-items: center
+  // padding: 1em
+  gap: 1em
+
+  &-toggle
+    display: none !important
+    z-index: 1
+    margin: auto
+    height: max-content
+
+    @media (max-width: 1200px)
+      display: inline-block !important
+
+  &-list
+    display: grid
+    grid-template-columns: repeat(5, 1fr)
+    gap: 1em
+
+    @media (max-width: 1200px)
+      display: none
+      grid-template-columns: 250px
+      align-content: start
+      position: fixed
+      background-color: black
+      top: 0
+      bottom: 0
+      left: 0
+      right: 0
+      padding: inherit
+      justify-content: center
+
+  // &-list button
+  //   width: 100%
+  //   padding: 10px
+  //   background-color: #f4f4f4
+  //   color: #333
+  //   border: none
+  //   cursor: pointer
+
+  &-enabled
+    display: grid
+    align-content: center

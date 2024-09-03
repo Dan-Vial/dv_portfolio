@@ -1,0 +1,38 @@
+@use "../../layout/default/base" as *
+
+.footer
+  display: grid
+  justify-items: center
+  gap: 1em
+  // border-top: $base-color-septenary solid 1px
+  background-color: $base-color-tertiary
+
+  &-content
+    display: grid
+    justify-items: stretch
+    gap: 3em
+    width: 100%
+    grid-template-columns: 1fr 1fr 1fr 1fr
+    padding: 1em
+    max-width: $base-max-width
+    box-sizing: border-box
+
+    @media (max-width: 1200px)
+      grid-template-columns: 250px
+      justify-content: center
+      gap: 1em
+
+    .nav-toggle
+      display: none !important
+
+  &-nav
+    display: flex
+    flex-direction: column
+    gap: 1em
+    width: 100%
+
+  &-picto-button
+    display: grid
+    grid-template-columns: auto 1fr
+    gap: 1em
+    grid-template-rows: 2.5em

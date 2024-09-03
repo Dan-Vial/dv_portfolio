@@ -1,0 +1,14 @@
+@use "../../layout/default/base" as *
+
+.tag
+  background-color: $base-color-septenary
+  width: 160px
+  padding: 0.5em
+  border-radius: 10px
+  text-align: center
+
+  @include font(0.9em, 700, $base-color-primary)
+
+  @media (max-width: 700px)
+    font-size: 0.65em
+    width: 120px

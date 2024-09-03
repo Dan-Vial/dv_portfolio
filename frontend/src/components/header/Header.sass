@@ -1,0 +1,82 @@
+@use "../../layout/default/base" as *
+
+.header
+  display: grid
+  justify-items: center
+  position: fixed
+  top: 0
+  left: 0
+  right: 0
+  z-index: 1000
+  border-bottom: $base-color-septenary solid 1px
+  background-color: $base-color-tertiary
+
+  &-content
+    display: grid
+    gap: 2em
+    padding: 0 1em
+    grid-template-columns: max-content 1fr max-content
+    justify-items: end
+    max-width: $base-max-width
+    width: 100%
+    box-sizing: border-box
+
+  &-title
+    padding: 0 0.5em
+    color: $base-color-tertiary
+    background-color: $base-color-quaternary
+    border-right: 5px solid $base-color-senary
+    transform: skew(-30deg)
+    border-radius: 1em
+    height: 80%
+    display: grid
+    align-content: center
+    align-self: center
+    margin-left: 1em
+    border-left: 5px solid $base-color-quinary
+
+  &-wave-content
+    display: grid
+    width: 100%
+
+  &-wave
+    opacity: 0
+    background: repeating-radial-gradient(#ffffff, #333333, #ffc107, #ff7100, #7B10C8 1em)
+    border-radius: 1em
+    width: 1em
+    height: 1em
+    animation: 2s linear 2s infinite wave
+
+  &-wave_1
+    animation-delay: .5s
+
+  &-wave_2
+    animation-delay: 1.5s
+
+  &-wave_3
+    animation-delay: 1s
+
+@keyframes wave
+  0%
+    margin-left: 0
+    transform: translateY(0)
+    filter: hue-rotate(0deg)
+    opacity: 1
+
+  20%
+    transform: translateY(100%)
+
+  40%
+    transform: translateY(0)
+
+  60%
+    transform: translateY(100%)
+
+  80%
+    transform: translateY(0)
+
+  100%
+    margin-left: 100%
+    transform: translateY(100%)
+    filter: hue-rotate(360deg)
+    opacity: 0

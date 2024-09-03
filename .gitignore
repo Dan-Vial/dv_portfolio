@@ -1,0 +1,27 @@
+# LOGS
+logs
+log
+*.log
+*.log.*
+
+# distribuable
+dist
+build
+
+# Dep Node
+node_modules
+.npm
+
+# dotenv
+.env
+.env.*
+
+# local
+*.local
+
+# dossier temp
+.tmp
+
+# dossier perso
+data
+public

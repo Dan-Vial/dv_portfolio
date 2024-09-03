@@ -1,0 +1,30 @@
+@use "../../layout/default/base" as *
+
+.error-page
+  display: grid
+  height: 100%
+  text-wrap: balance
+
+  &-a
+    color: $base-color-tertiary
+    margin: 2em
+
+    @media (max-width: 700px)
+      font-size: 0.7em
+
+  &-p
+    font-size: 2em
+    font-weight: 500
+    color: $base-color-tertiary
+    text-align: center
+
+    @media (max-width: 700px)
+      font-size: 1em
+
+  &-img
+    max-width: fit-content
+    width: 100%
+    height: auto
+
+    @media (max-width: 700px)
+      width: 60%

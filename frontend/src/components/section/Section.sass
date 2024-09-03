@@ -1,0 +1,33 @@
+@use "../../layout/default/base" as *
+
+.section
+  display: grid
+  grid-template-columns: 1fr
+  justify-items: center
+  border-bottom: $base-color-septenary solid 1px
+  scroll-margin-top: 5em
+
+  &-content
+    display: grid
+    padding: 1em
+    gap: 1em
+    scroll-margin-top: 6em
+    grid-template-columns: 1fr 1fr
+    max-width: $base-max-width
+    width: 100%
+    box-sizing: border-box
+
+    @media (max-width: 900px)
+      grid-template-columns: 1fr
+
+    &_col1
+      grid-template-columns: 1fr
+      // justify-items: center
+
+  &_p
+    background-color: $base-color-quaternary
+    color: $base-color-tertiary
+
+  &_i
+    background-color: $base-color-tertiary
+    color: $base-color-primary

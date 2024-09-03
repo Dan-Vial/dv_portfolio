@@ -1,0 +1,46 @@
+$base-color-primary: #ffffff
+$base-color-secondary: #333333
+$base-color-tertiary: #000000
+$base-color-quaternary: #ffc107
+$base-color-quinary: #ffa400
+$base-color-senary: #ff7100
+$base-color-septenary: #7B10C8
+
+$base-max-width: 1440px
+
+@mixin font($size, $weight, $color)
+  font-size: $size
+  font-weight: $weight
+  color: $color
+
+@mixin borderText($ep, $color: rgb(0, 0, 0))
+  text-shadow: $ep $ep $ep $color, (-$ep) (-$ep) $ep $color, $ep (-$ep) $ep $color, (-$ep) $ep $ep $color, $ep 0 $ep $color, (-$ep) 0 $ep $color, 0 (-$ep) $ep $color, 0 $ep $ep $color
+
+.button
+  display: inline-block
+  text-align: center
+  border-radius: 1em
+  background-color: $base-color-quaternary
+  color: $base-color-tertiary
+  text-decoration: none
+  padding: 0.5em
+  border: 3px solid $base-color-secondary
+  box-shadow: 3px 3px 3px 3px $base-color-senary
+  cursor: pointer
+  transition: all 0.5s ease
+  font-size: 1em
+
+  &:hover
+    background-color: $base-color-quinary
+
+  &:active
+    transform: translateY(5px)
+
+  &:focus
+    outline: 3px dotted $base-color-primary
+    outline-offset: 2px
+
+  &-disabled
+    cursor: not-allowed
+    background-color: $base-color-senary
+    pointer-events: none

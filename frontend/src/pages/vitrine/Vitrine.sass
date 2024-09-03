@@ -1,0 +1,46 @@
+@use "../../layout/default/base" as *
+
+.content-logement
+  display: grid
+  padding-top: 3em
+
+  @media (max-width: 700px)
+    // margin: 0 1rem
+
+  &-tag-list
+    display: flex
+    flex-wrap: wrap
+    gap: 0.5rem
+    margin-top: 1em
+
+  &-collapse-list
+    display: grid
+    grid-template-columns: 1fr 1fr
+    gap: 0 4em
+
+    @media (max-width: 700px)
+      grid-template-columns: inherit
+      gap: inherit
+
+  &-h2
+    @include font(2em, 500, $base-color-tertiary)
+
+  &-ratinguser
+    display: flex
+    flex-direction: column
+    gap: 1rem
+
+    @media (max-width: 900px)
+      flex-direction: row-reverse !important
+      justify-content: space-between
+      align-items: center
+
+  &-info
+    display: grid
+    justify-content: space-between
+    grid-auto-flow: column
+    gap: 2rem
+
+    @media (max-width: 900px)
+      grid-auto-flow: row !important
+      justify-content: inherit !important
