@@ -3,8 +3,8 @@ import { IconContext } from 'react-icons'
 import { GiSmartphone } from 'react-icons/gi'
 import { MdOutlineAlternateEmail } from 'react-icons/md'
 import { FaInstagram, FaRegCopyright } from 'react-icons/fa6'
-import { coordonnees, nav } from '../../data/Data'
-import Nav from '../../components/nav/Nav'
+import { coordonnees, nav } from '@data/Data'
+import Nav from '@components/nav/Nav'
 
 function Footer() {
   return (

@@ -3,15 +3,15 @@ import './ImgOpti.sass'
 export interface PropsImgOpti {
   className?: string,
   id?: string,
-  srcset: string,
+  srcset?: string,
   src: string,
   alt: string,
-  sizes: string
+  sizes?: string
 }
 
 function ImgOpti({ className, id, srcset, src, alt, sizes }: PropsImgOpti) {
   return (
-    <img id={id ?? ''} className={`card-img  ${className ?? ''}`}
+    <img id={id} className={`card-img  ${className}`}
       srcSet={srcset}
       sizes={sizes}
       src={src}

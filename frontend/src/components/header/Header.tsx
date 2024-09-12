@@ -1,6 +1,6 @@
 import './Header.sass'
-import Nav from '../nav/Nav'
-import { nav } from '../../data/Data'
+import Nav from '@components/nav/Nav'
+import { nav } from '@data/Data'
 
 function Header() {
   return (

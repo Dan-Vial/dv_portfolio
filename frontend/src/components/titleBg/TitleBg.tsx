@@ -1,5 +1,5 @@
 import './TitleBg.sass'
-import ImgOpti from '../ImgOpti/ImgOpti'
+import ImgOpti from '@components/ImgOpti/ImgOpti'
 import { ReactNode } from 'react'
 
 export interface PropsTitleBg {

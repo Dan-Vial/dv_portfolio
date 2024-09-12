@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useId, useRef, useState } from 'react'
 import './Nav.sass'
 import { Link } from 'react-router-dom'
 import { IconContext } from 'react-icons'
@@ -10,6 +10,8 @@ export interface NavProps {
 }
 
 function Nav({ nav, cssClass }: { nav: NavProps[], cssClass?: string }): JSX.Element {
+  const ref: React.MutableRefObject<HTMLAnchorElement | null> = useRef(null)
+  const navId: string = useId()
   const [enableNav, setEnableNav] = useState<boolean>(false)
 
   useEffect(() => {
@@ -18,6 +20,13 @@ function Nav({ nav, cssClass }: { nav: NavProps[], cssClass?: string }): JSX.Ele
 
   function handleClick(): void {
     setEnableNav(!enableNav)
+
+    if (ref.current && !enableNav) {
+      const fer = ref.current
+      setTimeout(() => {
+        fer.focus()
+      }, 300)
+    }
   }
 
   function handleLinkClick(idCible: string): void {
@@ -35,21 +44,24 @@ function Nav({ nav, cssClass }: { nav: NavProps[], cssClass?: string }): JSX.Ele
 
   return (
     < nav className={'nav'} >
-      <div className={`${cssClass ?? 'nav-list'} ${enableNav ? 'nav-enabled' : ''}`}
-      // id="nav-list"
-      >
-        {nav.map((link, index) =>
-          <Link to={link.href} className='button' key={index} onClick={() => { handleLinkClick(link.href) }}>
-            {link.text}
-          </Link >
-        )}
-      </div>
-      <button onClick={handleClick} className="button nav-toggle" aria-expanded={enableNav} aria-controls="nav-list">
+
+      <button onClick={handleClick} className="button nav-toggle" aria-expanded={enableNav} aria-controls={`nav-list-${navId}`} aria-label="Menu">
         <IconContext.Provider value={{ size: '1.5em' }}>
           <div>
             {enableNav ? <TiTimes /> : <TiThMenu />}
           </div>
         </IconContext.Provider></button>
+
+      <div id={`nav-list-${navId}`} className={`${cssClass ?? 'nav-list'} ${enableNav ? 'nav-enabled' : ''}`}
+      // id="nav-list"
+      >
+        {nav.map((link, index) =>
+          <Link ref={index === 0 ? ref : null} to={link.href} className='button' key={index} onClick={() => { handleLinkClick(link.href) }}>
+            {link.text}
+          </Link >
+        )}
+      </div>
+
     </nav >
   )
 }

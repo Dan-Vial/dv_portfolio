@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom'
 import './ContentError.sass'
-import { ContentPageError } from '../../routes/Error-page'
-import TitleBg from '../../components/titleBg/TitleBg'
-import Section from '../../components/section/Section'
+import { ContentPageError } from '@routes/Error-page'
+import TitleBg from '@components/titleBg/TitleBg'
+import Section from '@components/section/Section'
 
 function ErrorPage({ contentPageError, error }: { contentPageError: ContentPageError, error: unknown }) {
   const { text, link } = contentPageError

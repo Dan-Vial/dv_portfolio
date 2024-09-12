@@ -1,7 +1,7 @@
 import { useRouteError } from 'react-router-dom'
 
-import ContentError from '../pages/Error/Error'
-import Layout from '../layout/default/Layout'
+import ContentError from '@pages/Error/Error'
+import Layout from '@layout/default/Layout'
 
 export interface ContentPageError {
   text: string,

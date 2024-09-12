@@ -1,5 +1,5 @@
-import Layout from '../layout/default/Layout'
-import ContentAcueil from '../pages/accueil/Acueil'
+import Layout from '@layout/default/Layout'
+import ContentAcueil from '@pages/accueil/Acueil'
 
 function Accueil() {
   return (

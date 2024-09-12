@@ -1,6 +1,6 @@
 
-import Layout from '../layout/default/Layout'
-import PageVitrine, { PropsVitrines } from '../pages/vitrine/Vitrine'
+import Layout from '@layout/default/Layout'
+import PageVitrine, { PropsVitrines } from '@pages/vitrine/Vitrine'
 
 function Vitrine({ logement }: PropsVitrines) {
   return (

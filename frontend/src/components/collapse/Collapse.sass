@@ -11,11 +11,14 @@
   border-radius: 10px
   padding: 1px
   margin-bottom: 1em
+  border: solid 1px $base-color-primary
+  background: linear-gradient(180deg, $base-color-tertiary 0%, $base-color-septenary 50%, $base-color-secondary 100%)
 
   &-bar
     display: grid
     grid-template-columns: 1fr auto
-    padding: 0.3em
+    padding: 0 0.3em
+    align-items: center
 
     @media (max-width: 700px)
       font-size: 1em
@@ -26,29 +29,44 @@
     opacity: 0
     transition: all 0.5s ease-out
     color: $base-color-primary
+    background: linear-gradient(180deg, $base-color-tertiary 0%, $base-color-septenary 50%, $base-color-secondary 100%)
+    border-top: solid 1px $base-color-primary
+    border-radius: 0 0 10px 10px
 
     &-text
       margin-top: 0
-      background-color: $base-color-tertiary
+      // background-color: $base-color-tertiary
       overflow: hidden
-      border: solid 1px $base-color-septenary
-      border-radius: 0 0 10px 10px
+      // border: solid 1px $base-color-septenary
 
       &-margin
-        margin: 1rem
+        margin: 1em
 
     &__anim
       grid-template-rows: 1fr
       opacity: 1
 
   &-btn
-    padding: 0 1rem
-    height: 1.5rem
+    font-size: 1.5em
     cursor: pointer
+    border: none
+    background-color: #00000000
+    color: $base-color-primary
+    border-radius: 1em
     transition: transform 0.5s ease-out
 
     @media (max-width: 700px)
-      height: 1rem
+      font-size: 1em
+
+    &:hover
+      color: $base-color-senary
+
+    &:active
+      transform: translateY(5px)
+
+    &:focus
+      outline: 3px dotted $base-color-primary
+      outline-offset: 2px
 
     &__rot
       transform: rotate(-180deg)

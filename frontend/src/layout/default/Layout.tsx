@@ -1,12 +1,9 @@
-// import Head from '@view/head/Head.jsx'
-import Header from '../../components/header/Header'
-import Footer from '../../components/footer/Footer'
+import Header from '@components/header/Header'
+import Footer from '@components/footer/Footer'
 import './Layout.sass'
 import { ReactNode } from 'react'
 
 function Layout({ children }: { children: ReactNode }) {
-  // Head()
-
   try {
     const html: HTMLHtmlElement | null = document.querySelector<HTMLHtmlElement>('html')
     const root: Element | null = document.querySelector<Element>('#root')
@@ -25,7 +22,6 @@ function Layout({ children }: { children: ReactNode }) {
 
   return (
     <>
-      {/* <Head /> */}
       <Header />
       <main>
         {children}

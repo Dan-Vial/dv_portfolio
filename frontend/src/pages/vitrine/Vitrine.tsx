@@ -1,12 +1,12 @@
 import './Vitrine.sass'
-import Collapse from '../../components/collapse/Collapse'
-import Carrousel from '../../components/carrousel/Carrousel'
-import Tag from '../../components/tag/Tag'
-// import UserAvatar from '../../components/userAvatar/UserAvatar'
-// import Rating from '../../components/rating/Rating'
-// import TitleBg from '../../components/titleBg/TitleBg'
-import Section from '../../components/section/Section'
-import { PropsImgOpti } from '../../components/ImgOpti/ImgOpti'
+import Collapse from '@components/collapse/Collapse'
+import Carrousel from '@components/carrousel/Carrousel'
+import Tag from '@components/tag/Tag'
+// import UserAvatar from '@components/userAvatar/UserAvatar'
+// import Rating from '@components/rating/Rating'
+// import TitleBg from '@components/titleBg/TitleBg'
+import Section from '@components/section/Section'
+import { PropsImgOpti } from '@components/ImgOpti/ImgOpti'
 // import { Link } from 'react-router-dom'
 
 export interface PropsVitrines {
@@ -23,7 +23,8 @@ export interface PropsVitrines {
     title: string,
     location: string | JSX.Element | JSX.Element[],
     rating: number,
-    description: string | JSX.Element | JSX.Element[]
+    description: string | JSX.Element | JSX.Element[],
+    methodologie: string | JSX.Element | JSX.Element[]
   }
 }
 
@@ -64,6 +65,8 @@ function ContentLogement({ logement }: PropsVitrines) {
         <div className='content-logement-collapse-list'>
           <Collapse name='Description' text={logement.description} />
           <Collapse name='Liens' text={equipments.map((value, index) => <div key={index}> {value} </div>)} />
+
+          <Collapse name='Méthodologie' text={logement.methodologie} />
         </div>
       </Section>
 

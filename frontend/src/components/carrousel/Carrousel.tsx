@@ -1,8 +1,8 @@
 import './Carrousel.sass'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'
 import { IconContext } from 'react-icons'
-import ImgOpti, { PropsImgOpti } from '../ImgOpti/ImgOpti'
+import ImgOpti, { PropsImgOpti } from '@components/ImgOpti/ImgOpti'
 
 
 function Carrousel({ pictures }: { pictures: PropsImgOpti[] }) {
@@ -18,13 +18,13 @@ function Carrousel({ pictures }: { pictures: PropsImgOpti[] }) {
     }
   }
 
-  function changeRight(): void {
+  const changeRight = useCallback(() => {
     if (positionInArray === pictures.length - 1) {
       setPositionInArray(0)
     } else {
       setPositionInArray(positionInArray + 1)
     }
-  }
+  }, [positionInArray, pictures.length])
 
   function slide(pos: number): string | undefined {
     if (pos === positionInArray) return 'carrousel-slide-img__selected'
@@ -69,7 +69,7 @@ function Carrousel({ pictures }: { pictures: PropsImgOpti[] }) {
         clearInterval(animInterval)
       }
     }
-  }, [positionInArray])
+  }, [positionInArray, changeRight, pictures.length])
 
   return (
     <div className='carrousel'>
@@ -96,7 +96,6 @@ function Carrousel({ pictures }: { pictures: PropsImgOpti[] }) {
         {
           pictures.map((picture, index) =>
             <ImgOpti className={`carrousel-slide-img ${slide(index)}`} key={index} src={picture.src} alt={picture.alt} srcset={picture.srcset} sizes={'90vw'}></ImgOpti>
-            // <img className={`carrousel-slide-img ${slide(index)}`} key={index} src={picture} alt={(picture.split('/')).pop()} />
           )
         }
       </div>

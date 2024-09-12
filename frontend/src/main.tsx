@@ -2,10 +2,13 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
-import Accueil from './routes/Accueil'
-import ErrorPage from './routes/Error-page'
-import Vitrine from './routes/Vitrine'
-import { cards } from './data/Data'
+import Accueil from '@routes/Accueil'
+import ErrorPage from '@routes/Error-page'
+import Vitrine from '@routes/Vitrine'
+import { cards, headData } from '@data/Data'
+import Head from '@components/head/Head'
+
+Head(headData)
 
 const routesGaleries: {
   path: string,

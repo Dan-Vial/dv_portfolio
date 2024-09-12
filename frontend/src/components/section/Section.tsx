@@ -10,9 +10,10 @@ export interface PropsSection {
 }
 
 function Section({ id, className, children, num, title }: PropsSection) {
-
   function numIsPair(num: number): string {
     if (num & 1) {
+      if (num === 3) return 'section_i_1'
+      if (num === 5) return 'section_i_2'
       return 'section_i'
     } else {
       return 'section_p'
@@ -21,7 +22,7 @@ function Section({ id, className, children, num, title }: PropsSection) {
 
   return (
     <section id={id} className={`section ${numIsPair(num)}`} >
-      <h2>{title}</h2>
+      {title ? <h2 className='title'>{title}</h2> : ''}
       <div className={`section-content ${className ?? ''}`}>
         {children}
       </div>
