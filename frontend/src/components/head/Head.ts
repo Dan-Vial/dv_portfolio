@@ -29,11 +29,11 @@ export interface headData {
   };
 }
 
-function Head(headData: headData) {
+function Head(headData: headData, server: boolean = false) {
   const { card, coordonnees } = headData
   document.title = headData.title
 
-  addHtml(`
+  const head = `
 
     <-- <link rel="canonical" href="https://dvpro.fr"> -->
     <meta name="description" content="${headData.description}" />
@@ -75,7 +75,13 @@ function Head(headData: headData) {
         ],
         "priceRange": ""
       }
-    </script>`)
+    </script>`
+
+  if (server) {
+    return head
+  }
+
+  addHtml(head)
 }
 
 export default Head

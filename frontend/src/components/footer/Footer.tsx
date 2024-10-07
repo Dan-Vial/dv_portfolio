@@ -59,8 +59,8 @@ function Footer() {
         <div>
           <h3>Mentions légales</h3>
           <nav className='footer-nav'>
-            <a className="button button-disabled" href="#/mentions-légales">Mentions légales</a>
-            <a className="button button-disabled" href="#/politique-de-confidentialite">Politique de confidentialité</a>
+            <a className="button" href="/mentions-legales">Mentions légales</a>
+            <a className="button" href="/politique-de-confidentialite">Politique de confidentialité</a>
             <a className="button button-disabled" href="#/conditions-d-utilisation">Conditions générales d’utilisation</a>
             <a className="button button-disabled" href="#/conditions-générales-de-vente">Conditions générales de vente</a>
           </nav>

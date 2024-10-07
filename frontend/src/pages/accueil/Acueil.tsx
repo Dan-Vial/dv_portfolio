@@ -35,13 +35,13 @@ function ContentAcueil() {
 
       </Section>
 
-      <Section id='#galerie' num={count++} title={'Galerie'}>
+      <Section id='galerie' num={count++} title={'Galerie'}>
 
         {cardList}
 
       </Section>
 
-      <Section id='#competences' num={count++} title={'Compétences'}>
+      <Section id='competences' num={count++} title={'Compétences'}>
 
         {
           sections['Compétences'].map((card, indexCard) =>
@@ -63,7 +63,7 @@ function ContentAcueil() {
 
       </Section>
 
-      <Section id='#services' num={count++} title={'Services'}>
+      <Section id='services' num={count++} title={'Services'}>
 
         {
           sections['Services'].map((collapse, indexCollapse) =>
@@ -73,7 +73,7 @@ function ContentAcueil() {
 
       </Section>
 
-      {/* <Section id='#mentor' num={count++} title={'Mentor'}>
+      {/* <Section id='mentor' num={count++} title={'Mentor'}>
         <div className='card card_pad'>
           <div className='apropos-card'>
             <p>Mentor</p>
@@ -86,7 +86,7 @@ function ContentAcueil() {
         </div>
       </Section> */}
 
-      <Section id='#contact' num={count++} title={'Contact'}>
+      <Section id='contact' num={count++} title={'Contact'}>
         <div className='card card_pad'>
 
           <div className='form-contact'>
@@ -116,7 +116,7 @@ function ContentAcueil() {
         </div>
       </Section >
 
-      {/* <Section id='#chartegraphique' num={count++} title={'Charte graphique'}>
+      {/* <Section id='chartegraphique' num={count++} title={'Charte graphique'}>
         <div className='card card_pad'>
           <div className='apropos-card'>
             <p>colors fg</p>

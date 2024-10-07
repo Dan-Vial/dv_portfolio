@@ -19,7 +19,6 @@ function pathTsToVite(tsconfig: { compilerOptions: { paths: { [key: string]: str
     //   alias[nameKey].push(paths[element][key])
     // }
   }
-
   return alias
 }
 
@@ -32,14 +31,15 @@ export default defineConfig({
     https: {
       key: fs.readFileSync('../../../ssl/certs/localhost.key'),
       cert: fs.readFileSync('../../../ssl/certs/localhost.crt'),
-    },
+    }
   },
   build: {
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
         data: resolve(__dirname, 'src/data/Data.tsx'),
-      }
+        // mainssr: resolve(__dirname, 'src/mainSSR.tsx'),
+      },
     }
   },
   resolve: {

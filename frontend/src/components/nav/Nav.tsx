@@ -13,39 +13,33 @@ function Nav({ nav, cssClass }: { nav: NavProps[], cssClass?: string }): JSX.Ele
   const ref: React.MutableRefObject<HTMLAnchorElement | null> = useRef(null)
   const navId: string = useId()
   const [enableNav, setEnableNav] = useState<boolean>(false)
+  const [hashEffect, sethashEffect] = useState<boolean>(false)
 
   useEffect(() => {
-    handleLinkClick(window.location.href)
-  }, [])
-
-  function handleClick(): void {
-    setEnableNav(!enableNav)
-
-    if (ref.current && !enableNav) {
-      const fer = ref.current
-      setTimeout(() => {
-        fer.focus()
-      }, 300)
+    if (enableNav) {
+      ref.current?.focus()
     }
-  }
 
-  function handleLinkClick(idCible: string): void {
-    const url = new URL(idCible)
-    if (url.hash) {
-      const cible: HTMLElement | null = document.getElementById(url.hash)
-      if (cible) {
-        cible.scrollIntoView({ behavior: 'smooth', block: 'start' })
-      }
+    if (window.location.hash) {
+      document.querySelector(window.location.hash)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
     } else {
       window.scrollTo({ behavior: 'smooth', top: 0 })
     }
+  }, [enableNav, hashEffect])
+
+  function handleClickMenu(): void {
+    setEnableNav(!enableNav)
+  }
+
+  function handleClickNav() {
     setEnableNav(false)
+    sethashEffect(!hashEffect)
   }
 
   return (
     < nav className={'nav'} >
 
-      <button onClick={handleClick} className="button nav-toggle" aria-expanded={enableNav} aria-controls={`nav-list-${navId}`} aria-label="Menu">
+      <button onClick={handleClickMenu} className="button nav-toggle" aria-expanded={enableNav} aria-controls={`nav-list-${navId}`} aria-label="Menu">
         <IconContext.Provider value={{ size: '1.5em' }}>
           <div>
             {enableNav ? <TiTimes /> : <TiThMenu />}
@@ -53,10 +47,9 @@ function Nav({ nav, cssClass }: { nav: NavProps[], cssClass?: string }): JSX.Ele
         </IconContext.Provider></button>
 
       <div id={`nav-list-${navId}`} className={`${cssClass ?? 'nav-list'} ${enableNav ? 'nav-enabled' : ''}`}
-      // id="nav-list"
       >
         {nav.map((link, index) =>
-          <Link ref={index === 0 ? ref : null} to={link.href} className='button' key={index} onClick={() => { handleLinkClick(link.href) }}>
+          <Link ref={index === 0 ? ref : null} to={link.href} className='button' key={index} onClick={handleClickNav}>
             {link.text}
           </Link >
         )}
