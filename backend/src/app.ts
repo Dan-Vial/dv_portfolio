@@ -9,6 +9,7 @@ import compression from 'compression'
 // import helmet from 'helmet'
 import 'dotenv/config'
 import useragent from 'express-useragent'
+import './postgres'
 
 import indexRouter from './routes/index'
 import usersRouter from './routes/users'
