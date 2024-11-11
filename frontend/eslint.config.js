@@ -1,21 +1,30 @@
-import js from '@eslint/js'
+import pluginJs from '@eslint/js'
 import globals from 'globals'
 import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
 import tseslint from 'typescript-eslint'
+import react from 'eslint-plugin-react'
+import stylistic from '@stylistic/eslint-plugin'
 
 export default tseslint.config(
   { ignores: ['dist'] },
   {
-    extends: [js.configs.recommended, ...tseslint.configs.recommended],
-    files: ['**/*.{ts,tsx}'],
+    extends: [pluginJs.configs.recommended, ...tseslint.configs.strictTypeChecked, ...tseslint.configs.stylisticTypeChecked],
+    files: ['src/**/*.{ts,tsx}'],
     languageOptions: {
       ecmaVersion: 2020,
       globals: globals.browser,
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
     },
+    settings: { react: { version: '18.3' } },
     plugins: {
+      react,
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
+      '@stylistic': stylistic
     },
     rules: {
       ...reactHooks.configs.recommended.rules,
@@ -23,22 +32,24 @@ export default tseslint.config(
         'warn',
         { allowConstantExport: true },
       ],
-      'indent': [
+      ...react.configs.recommended.rules,
+      ...react.configs['jsx-runtime'].rules,
+      '@stylistic/indent': ['error', 2],
+      '@stylistic/quotes': ['error', 'single'],
+      '@stylistic/semi': ['error', 'never'],
+      '@stylistic/linebreak-style': ['error', 'unix'],
+      '@typescript-eslint/no-unused-vars': [
         'error',
-        2
-      ],
-      'linebreak-style': [
-        'error',
-        'unix'
-      ],
-      'quotes': [
-        'error',
-        'single'
-      ],
-      'semi': [
-        'error',
-        'never'
+        {
+          'args': 'all',
+          'argsIgnorePattern': '^_',
+          'caughtErrors': 'all',
+          'caughtErrorsIgnorePattern': '^_',
+          'destructuredArrayIgnorePattern': '^_',
+          'varsIgnorePattern': '^_',
+          'ignoreRestSiblings': true
+        }
       ]
-    },
-  },
+    }
+  }
 )
