@@ -1,7 +1,7 @@
 // import createError from 'http-errors'
 import express from 'express'
-// import { dirname, join } from 'path'
-// import { fileURLToPath } from 'url'
+import { dirname, join } from 'path'
+import { fileURLToPath } from 'url'
 import logger from 'morgan'
 import cookieParser from 'cookie-parser'
 import compression from 'compression'
@@ -10,12 +10,18 @@ import compression from 'compression'
 import 'dotenv/config'
 import useragent from 'express-useragent'
 import './postgres'
+import { createStream } from 'rotating-file-stream'
 
 import indexRouter from './routes/index'
 import msgRouter from './routes/msg'
 
 const app = express()
-
+const accessLogStream = createStream('access.log', {
+  interval: '1M',
+  path: join(dirname(fileURLToPath(import.meta.url)), 'logs'),
+  compress: true
+})
+app.use(logger('combined', { stream: accessLogStream }))
 app.use(logger('dev'))
 app.use(compression())
 // app.use(cors())
