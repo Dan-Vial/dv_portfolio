@@ -29,7 +29,7 @@ function createFetchRequest(req: express.Request, res: express.Response) {
   const url = new URL(req.originalUrl || req.url, origin)
 
   const controller = new AbortController()
-  res.on('close', () => controller.abort())
+  res.on('close', () => { controller.abort() })
 
   const headers = new Headers()
 

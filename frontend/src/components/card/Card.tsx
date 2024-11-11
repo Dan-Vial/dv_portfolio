@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import ImgOpti, { PropsImgOpti } from '@components/ImgOpti/ImgOpti'
 
 export interface cardProps {
-  href?: string,
+  href: string,
   dataId?: number,
   title: string,
   img: PropsImgOpti
@@ -11,7 +11,7 @@ export interface cardProps {
 
 function Card({ href, dataId, title, img }: cardProps) {
   return (
-    <Link to={href as string} data-id={dataId} className='card card_click'>
+    <Link to={href} data-id={dataId} className='card card_click'>
       <figure className='card-figure'>
         <ImgOpti src={img.src} srcset={img.srcset} sizes={img.sizes} alt={img.alt} />
         <figcaption className='card-figcaption'><p>

@@ -8,9 +8,14 @@ import routes from './routes'
 Head(headData)
 
 const router = createBrowserRouter(routes)
+const root = document.querySelector('#root')
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <RouterProvider router={router} />
-  </StrictMode>,
-)
+if (root) {
+  createRoot(root).render(
+    <StrictMode>
+      <RouterProvider router={router} />
+    </StrictMode>,
+  )
+} else {
+  console.log('id root was not found')
+}

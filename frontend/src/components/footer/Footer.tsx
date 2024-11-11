@@ -5,6 +5,7 @@ import { MdOutlineAlternateEmail } from 'react-icons/md'
 import { FaInstagram, FaRegCopyright } from 'react-icons/fa6'
 import { coordonnees, nav } from '@data/Data'
 import Nav from '@components/nav/Nav'
+import { Link } from 'react-router-dom'
 
 function Footer() {
   return (
@@ -24,7 +25,7 @@ function Footer() {
                   <GiSmartphone />
                 </span>
               </IconContext.Provider>
-              <a className="button" href={`tel:${coordonnees.tel}`}>{`${coordonnees.tel}`}</a>
+              <a className="button" href={`tel:${coordonnees.tel}`}>{coordonnees.tel}</a>
             </div>
             <div className='footer-picto-button'>
               <IconContext.Provider value={{ size: '3em', style: { verticalAlign: 'middle' } }}>
@@ -32,7 +33,7 @@ function Footer() {
                   <MdOutlineAlternateEmail />
                 </span>
               </IconContext.Provider>
-              <a className="button" href={`mailto:${coordonnees.email}`} target={'_blank'}>{`${coordonnees.email}`}</a>
+              <a className="button" href={`mailto:${coordonnees.email}`} target={'_blank'} rel="noreferrer">{coordonnees.email}</a>
             </div>
             <strong>{`${coordonnees.firstName} ${coordonnees.lastName}`}</strong>
             <div>{`${coordonnees.voie}, ${coordonnees.rue}`}</div>
@@ -49,9 +50,9 @@ function Footer() {
                   <FaInstagram />
                 </span>
               </IconContext.Provider>
-              <a className="button button-disabled" href="#" target="_blank">
+              <Link className="button button-disabled" to="#" target="_blank">
                 Instagram
-              </a>
+              </Link>
             </div>
 
           </nav>
@@ -59,10 +60,10 @@ function Footer() {
         <div>
           <h3>Mentions légales</h3>
           <nav className='footer-nav'>
-            <a className="button" href="/mentions-legales">Mentions légales</a>
-            <a className="button" href="/politique-de-confidentialite">Politique de confidentialité</a>
-            <a className="button button-disabled" href="#/conditions-d-utilisation">Conditions générales d’utilisation</a>
-            <a className="button button-disabled" href="#/conditions-générales-de-vente">Conditions générales de vente</a>
+            <Link className="button" to="/mentions-legales">Mentions légales</Link>
+            <Link className="button" to="/politique-de-confidentialite">Politique de confidentialité</Link>
+            <Link className="button button-disabled" to="#/conditions-d-utilisation">Conditions générales d’utilisation</Link>
+            <Link className="button button-disabled" to="#/conditions-générales-de-vente">Conditions générales de vente</Link>
           </nav>
         </div>
         <div>

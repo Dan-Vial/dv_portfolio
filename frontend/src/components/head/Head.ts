@@ -29,7 +29,7 @@ export interface headData {
   };
 }
 
-function Head(headData: headData, server: boolean = false) {
+function Head(headData: headData, server = false) {
   const { card, coordonnees } = headData
   document.title = headData.title
 

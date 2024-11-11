@@ -1,7 +1,7 @@
+import { JSX, ReactNode } from 'react'
 import './Rating.sass'
 import star from '@assets/star.svg'
 import star_colored from '@assets/star_colored.svg'
-import { ReactNode } from 'react'
 
 export interface PropsRating {
   className?: string,

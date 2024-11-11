@@ -1,4 +1,4 @@
-import Section from '@components/section/Section'
+import { Section } from '@components/section/Section'
 import './Mentions_legales.sass'
 import { coordonnees } from '@data/Data'
 
@@ -42,7 +42,7 @@ function ContentMentionsLegales() {
                 Le contenu du site dvpro.fr (textes, images, graphismes, logos, etc.) est la propriété exclusive de Dan VIAL, sauf mention contraire.
               </p>
               <p>
-                Certaines photos utilisées sur ce site ne sont pas la propriété de Dan VIAL. Elles sont utilisées avec l'autorisation de leurs auteurs ou conformément aux licences applicables. Voici les crédits des photos concernées :
+                Certaines photos utilisées sur ce site ne sont pas la propriété de Dan VIAL. Elles sont utilisées avec l&apos;autorisation de leurs auteurs ou conformément aux licences applicables. Voici les crédits des photos concernées :
               </p>
 
               <div>
@@ -79,7 +79,7 @@ function ContentMentionsLegales() {
             <p>Responsabilité</p>
             <div >
               <p>
-                Les informations présentes sur ce site sont fournies à titre informatif. Dan VIAL ne peut être tenu responsable des erreurs ou omissions, ni des dommages découlant de l'utilisation des informations fournies sur le site.
+                Les informations présentes sur ce site sont fournies à titre informatif. Dan VIAL ne peut être tenu responsable des erreurs ou omissions, ni des dommages découlant de l&apos;utilisation des informations fournies sur le site.
               </p>
             </div>
           </div>

@@ -8,7 +8,7 @@ function Layout({ children }: { children: ReactNode }) {
   useEffect(() => {
     try {
       const html: HTMLHtmlElement | null = document.querySelector<HTMLHtmlElement>('html')
-      const root: Element | null = document.querySelector<Element>('#root')
+      const root: Element | null = document.querySelector('#root')
       if (html && root) {
         html.setAttribute('lang', 'fr')
         html.classList.add('layout')
@@ -22,7 +22,9 @@ function Layout({ children }: { children: ReactNode }) {
       console.error(error)
     }
 
-    if (!window.location.hash) {
+    if (window.location.hash) {
+      document.querySelector(window.location.hash)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    } else {
       window.scrollTo({ behavior: 'smooth', top: 0 })
     }
   }, [])

@@ -11,7 +11,7 @@ export interface PropsImgOpti {
 
 function ImgOpti({ className, id, srcset, src, alt, sizes }: PropsImgOpti) {
   return (
-    <img id={id} className={`card-img  ${className}`}
+    <img id={id} className={`card-img  ${className ?? ''}`}
       srcSet={srcset}
       sizes={sizes}
       src={src}

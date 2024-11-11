@@ -1,4 +1,4 @@
-import { ReactNode, useId, useState } from 'react'
+import { JSX, ReactNode, useId, useState } from 'react'
 import './Collapse.sass'
 import { IoIosArrowUp } from 'react-icons/io'
 import { IconContext } from 'react-icons'
@@ -23,7 +23,7 @@ function Collapses({ name, text }: PropsCollapses) {
 
 
           <IconContext.Provider value={{}}>
-            <button className={visible ? 'collapse-btn collapse-btn__rot' : 'collapse-btn'} onClick={() => setVisible(!visible)}
+            <button className={visible ? 'collapse-btn collapse-btn__rot' : 'collapse-btn'} onClick={() => { setVisible(!visible) }}
               aria-expanded={visible}
               aria-controls={`collapse-${collapsesId}`} aria-label="Collapse arrow">
               <IoIosArrowUp />

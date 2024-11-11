@@ -76,15 +76,15 @@ function Carrousel({ pictures }: { pictures: PropsImgOpti[] }) {
       {
         pictures.length === 1 ? '' :
           <>
-            <div className='carrousel-input carrousel-input__left' onClick={() => debounce(changeLeft)}>
+            <div className='carrousel-input carrousel-input__left' onClick={() => { debounce(changeLeft) }}>
               <IconContext.Provider value={{}}>
                 <IoIosArrowBack />
               </IconContext.Provider>
             </div>
 
-            <div className='carrousel-numpicture'>{`${positionInArray + 1}/${pictures.length}`}</div>
+            <div className='carrousel-numpicture'>{`${(positionInArray + 1).toString()}/${pictures.length.toString()}`}</div>
 
-            <div className='carrousel-input carrousel-input__right' onClick={() => debounce(changeRight)}>
+            <div className='carrousel-input carrousel-input__right' onClick={() => { debounce(changeRight) }}>
               <IconContext.Provider value={{}}>
                 <IoIosArrowForward />
               </IconContext.Provider>
@@ -95,7 +95,7 @@ function Carrousel({ pictures }: { pictures: PropsImgOpti[] }) {
       <div className='carrousel-slide' >
         {
           pictures.map((picture, index) =>
-            <ImgOpti className={`carrousel-slide-img ${slide(index)}`} key={index} src={picture.src} alt={picture.alt} srcset={picture.srcset} sizes={'90vw'}></ImgOpti>
+            <ImgOpti className={`carrousel-slide-img ${slide(index) ?? ''}`} key={index} src={picture.src} alt={picture.alt} srcset={picture.srcset} sizes={'90vw'}></ImgOpti>
           )
         }
       </div>

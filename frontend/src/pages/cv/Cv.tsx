@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 import './Cv.sass'
-import Section from '@components/section/Section'
+import { Section } from '@components/section/Section'
 import { curriculum } from '@data/Data'
 
 const SectionCv = function ({ title, children }: { title: string, children?: ReactNode }) {

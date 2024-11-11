@@ -1,5 +1,9 @@
 /**
- * Routes agnostique [ createBrowserRouter / createStaticRouter (SSR) ]
+ * +--------------------------------------------------------------------+
+ * |                   | createBrowserRouter | createStaticRouter (SSR) |
+ * | Routes agnostique |------------------------------------------------|
+ * |                   | main.tsx            | mainSSR.tsx              |
+ * +--------------------------------------------------------------------+
  */
 
 import Accueil from '@routes/Accueil'
@@ -9,6 +13,7 @@ import MentionsLegales from '@routes/Mentions_legales'
 import PolitiqueDeConfidentialite from '@routes/Politique_de_confidentialite'
 import Cv from '@routes/Cv'
 import { cards } from '@data/Data'
+import { JSX } from 'react'
 
 const routesGaleries: {
   path: string,

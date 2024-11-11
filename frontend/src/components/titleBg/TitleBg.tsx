@@ -13,7 +13,7 @@ export interface PropsTitleBg {
   sizes?: string
 }
 
-function TitleBg({ className, id, children, title, srcset, src, alt, sizes }: PropsTitleBg) {
+export function TitleBg({ className, id, children, title, srcset, src, alt, sizes }: PropsTitleBg) {
   return (
     <div id={id ?? ''} className={`title-bg ${className ?? ''}`}>
 
@@ -29,5 +29,3 @@ function TitleBg({ className, id, children, title, srcset, src, alt, sizes }: Pr
     </div>
   )
 }
-
-export default TitleBg

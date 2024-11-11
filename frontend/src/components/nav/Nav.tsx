@@ -1,4 +1,4 @@
-import { useEffect, useId, useRef, useState } from 'react'
+import { JSX, useEffect, useId, useRef, useState } from 'react'
 import './Nav.sass'
 import { Link } from 'react-router-dom'
 import { IconContext } from 'react-icons'

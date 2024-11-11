@@ -1,3 +1,4 @@
+import { JSX } from 'react'
 import './Vitrine.sass'
 import Collapse from '@components/collapse/Collapse'
 import Carrousel from '@components/carrousel/Carrousel'
@@ -5,7 +6,7 @@ import Tag from '@components/tag/Tag'
 // import UserAvatar from '@components/userAvatar/UserAvatar'
 // import Rating from '@components/rating/Rating'
 // import TitleBg from '@components/titleBg/TitleBg'
-import Section from '@components/section/Section'
+import { Section } from '@components/section/Section'
 import { PropsImgOpti } from '@components/ImgOpti/ImgOpti'
 // import { Link } from 'react-router-dom'
 
@@ -32,7 +33,7 @@ export type Logement = PropsVitrines['logement']
 
 function ContentLogement({ logement }: PropsVitrines) {
   const { pictures, equipments, tags } = logement
-  let count: number = 0
+  let count = 0
 
   return (
     <div className='content-logement'>

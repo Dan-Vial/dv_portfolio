@@ -9,7 +9,7 @@ export interface PropsSection {
   title?: string
 }
 
-function Section({ id, className, children, num, title }: PropsSection) {
+export function Section({ id, className, children, num, title }: PropsSection) {
   function numIsPair(num: number): string {
     if (num & 1) {
       if (num === 3) return 'section_i_1'
@@ -29,5 +29,3 @@ function Section({ id, className, children, num, title }: PropsSection) {
     </section>
   )
 }
-
-export default Section

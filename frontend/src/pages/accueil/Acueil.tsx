@@ -1,9 +1,10 @@
+import { JSX } from 'react'
 import './Acueil.sass'
-import Section from '@components/section/Section'
+import { Section } from '@components/section/Section'
 import Card from '@components/card/Card'
 import { sections, cards, coordonnees } from '@data/Data'
 import FormContact from '@components/formContact/FormContact'
-import TitleBg from '@components/titleBg/TitleBg'
+import { TitleBg } from '@components/titleBg/TitleBg'
 import images from '@public/images/baliseHTMLimg.json'
 import Arrow from '@components/arrow/Arrow'
 import { IconContext } from 'react-icons'
@@ -13,7 +14,7 @@ import { MdOutlineAlternateEmail } from 'react-icons/md'
 import { GiSmartphone } from 'react-icons/gi'
 
 function ContentAcueil() {
-  let count: number = 0
+  let count = 0
   const imgTitle = images['./images/pc/pc.png']
   const cardList: JSX.Element[] = cards.map<JSX.Element>(card => {
     card.pictures[0].sizes = '50vw'
@@ -66,7 +67,7 @@ function ContentAcueil() {
       <Section id='services' num={count++} title={'Services'}>
 
         {
-          sections['Services'].map((collapse, indexCollapse) =>
+          sections.Services.map((collapse, indexCollapse) =>
             <Collapses key={indexCollapse} name={collapse.title} text={collapse.text} />
           )
         }
@@ -97,7 +98,7 @@ function ContentAcueil() {
                   <GiSmartphone />
                 </span>
               </IconContext.Provider>
-              <a className="button button_50p" href={`tel:${coordonnees.tel}`}>{`${coordonnees.tel}`}</a>
+              <a className="button button_50p" href={`tel:${coordonnees.tel}`}>{coordonnees.tel}</a>
             </div>
             <div className='footer-picto-button'>
               <IconContext.Provider value={{ size: '3em', style: { verticalAlign: 'middle' } }}>
@@ -105,7 +106,7 @@ function ContentAcueil() {
                   <MdOutlineAlternateEmail />
                 </span>
               </IconContext.Provider>
-              <a className="button button_50p" href={`mailto:${coordonnees.email}`} target={'_blank'}>{`${coordonnees.email}`}</a>
+              <a className="button button_50p" href={`mailto:${coordonnees.email}`} target={'_blank'} rel="noreferrer">{coordonnees.email}</a>
             </div>
             <iframe title="Google Maps" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5680.915429571118!2d4.7201558765091045!3d44.60811579014894!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12b53ff955cc7f63%3A0x982e2e9e2221c128!2s2%20Pl.%20des%20%C3%89coles%2C%2007400%20Meysse!5e0!3m2!1sfr!2sfr!4v1724781970264!5m2!1sfr!2sfr" style={{ border: 0, width: '100%', height: '100%', minHeight: '350px' }} allowFullScreen={false} loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
           </div>
