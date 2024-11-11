@@ -1,50 +1,72 @@
 import { FormEvent, useEffect, useRef, useState } from 'react'
 import './FormContact.sass'
-import ReCAPTCHA from 'react-google-recaptcha'
+import ReCAPTCHA, { ReCAPTCHARef } from '@components/reCAPTCHA/ReCAPTCHA'
 
 function FormContact() {
-  const recaptcha = useRef<ReCAPTCHA>(null)
+  const recaptchaRef = useRef<ReCAPTCHARef | null>(null)
+  const [recaptchaVerify, setRecaptchaVerify] = useState<boolean>(false)
+
   const [name, setName] = useState<string>('')
   const [email, setEmail] = useState<string>('')
   const [msg, setMsg] = useState<string>('')
   const [rgpd, setRgpd] = useState<boolean>(false)
   const [emailSended, setEmailSended] = useState<boolean>(false)
 
-  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
 
-    const formDom: EventTarget & HTMLFormElement = event.currentTarget
-
-    if (formDom.reportValidity() && recaptcha.current?.getValue() && rgpd) {
-      const postMail = await fetch('/mail', {
-        method: 'POST',
-        headers: {
-          'accept': 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          data: {
-            'name': name,
-            'email': email,
-            'message': msg
+    if (event.currentTarget.reportValidity()) {
+      const recaptchaToken = recaptchaRef.current?.getValue()
+      if (recaptchaToken && recaptchaVerify) {
+        try {
+          async function fetching() {
+            const postMail = await fetch('/mail', {
+              method: 'POST',
+              headers: {
+                'accept': 'application/json',
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                data: {
+                  'name': name,
+                  'email': email,
+                  'message': msg
+                }
+              }),
+            })
+            const rep = await postMail.json() as { msg: string }
+            if (rep.msg) {
+              setEmailSended(true)
+            } else {
+              console.error('Échec de l\'envoi de l\'email:', rep)
+            }
           }
-        }),
-      })
-      const rep = await postMail.json()
 
-      if (rep.msg) {
-        setEmailSended(true)
+          void fetching()
+        } catch (error) {
+          console.error('Erreur lors de l\'envoi de l\'email:', error)
+        }
+      } else {
+        console.warn('Le token reCAPTCHA est manquant, expiré ou invalide.')
       }
     }
   }
 
   function clear() {
-    recaptcha.current?.reset()
+    recaptchaRef.current?.reset()
     setName('')
     setEmail('')
     setMsg('')
     setRgpd(false)
     setEmailSended(false)
+  }
+
+  function handleVerify(token: string | null) {
+    if (token) {
+      setRecaptchaVerify(true)
+    } else {
+      setRecaptchaVerify(false)
+    }
   }
 
   useEffect(() => {
@@ -62,7 +84,7 @@ function FormContact() {
       <input onChange={(event) => { setEmail(event.target.value) }} value={email} type="email" name="email" id="email" autoComplete="email" required></input>
 
       <label htmlFor="message">Message</label>
-      <textarea onChange={(event) => { setMsg(event.target.value) }} value={msg} name="message" id="message" cols={30} rows={10} required></textarea>
+      <textarea onChange={(event) => { setMsg(event.target.value) }} value={msg} name="message" id="message" cols={30} rows={10} spellCheck={true} required></textarea>
 
       <div>
         <label htmlFor="rgpd">RGPD </label>
@@ -71,8 +93,9 @@ function FormContact() {
       </div>
 
       <ReCAPTCHA
-        ref={recaptcha}
-        sitekey={'6LdIUkwqAAAAABjWzqo6zJBc-YuUL2CKYlhY5u_q'}
+        ref={recaptchaRef}
+        siteKey={'6LffLnkqAAAAAIxGhw95dDCN4sawgm1DuZu82x2b'}
+        handleExpired={handleVerify}
       />
 
       <input className={'button'} type="submit" value="Envoyer"></input>

@@ -4,7 +4,6 @@ import './Layout.sass'
 import { ReactNode, useEffect } from 'react'
 
 function Layout({ children }: { children: ReactNode }) {
-
   useEffect(() => {
     try {
       const html: HTMLHtmlElement | null = document.querySelector<HTMLHtmlElement>('html')
