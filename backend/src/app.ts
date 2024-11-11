@@ -6,14 +6,14 @@ import logger from 'morgan'
 import cookieParser from 'cookie-parser'
 import compression from 'compression'
 // import cors from 'cors'
-// import helmet from 'helmet'
+import helmet from 'helmet'
 import 'dotenv/config'
 import useragent from 'express-useragent'
 import './postgres'
 import { createStream } from 'rotating-file-stream'
 
-import indexRouter from './routes/index'
-import msgRouter from './routes/msg'
+import indexRouter from '@routes/index'
+import msgRouter from '@routes/msg'
 
 const app = express()
 const accessLogStream = createStream('access.log', {
@@ -27,7 +27,21 @@ app.use(compression())
 // app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
-// app.use(helmet({ crossOriginResourcePolicy: false }))
+app.use(helmet({
+  contentSecurityPolicy: {
+    directives: {
+      defaultSrc: ['\'self\''],
+      frameSrc: ['\'self\'', 'https://www.google.com/'],
+      scriptSrc: [
+        '\'self\'',
+        //  \'unsafe-inline\'',
+        'https://maps.googleapis.com',
+        'https://www.google.com',
+        'https://www.gstatic.com'
+      ],
+    }
+  }
+}))
 app.disable('x-powered-by')
 app.use(cookieParser())
 app.use(useragent.express())
