@@ -14,6 +14,7 @@ import { createStream } from 'rotating-file-stream'
 
 import indexRouter from '@routes/index'
 import msgRouter from '@routes/msg'
+import apiRouter from '@routes/api'
 
 const app = express()
 const accessLogStream = createStream('access.log', {
@@ -34,7 +35,7 @@ app.use(helmet({
       frameSrc: ['\'self\'', 'https://www.google.com/'],
       scriptSrc: [
         '\'self\'',
-        //  \'unsafe-inline\'',
+        '\'unsafe-inline\'',
         'https://maps.googleapis.com',
         'https://www.google.com',
         'https://www.gstatic.com'
@@ -50,6 +51,7 @@ app.use(useragent.express())
  * orders important: API BackEnd, static file public, REACT route imdex.html
  */
 app.use('/mail', msgRouter)
+app.use('/api', apiRouter)
 app.use(express.static(process.env.DIR_PUBLIC!, { index: false }))
 app.use('*', indexRouter)
 

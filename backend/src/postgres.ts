@@ -11,7 +11,6 @@ try {
 
     const res = await pool.query('SELECT NOW()')
     console.log(res.rows[0].now)
-
   }
 } catch (error) {
   console.log('Connexion à postgresql pg échouée ! Error: ', error)
