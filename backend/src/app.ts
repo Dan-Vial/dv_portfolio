@@ -1,5 +1,5 @@
 // import createError from 'http-errors'
-import express from 'express'
+import express, { NextFunction, Request, Response } from 'express'
 import { dirname, join } from 'path'
 import { fileURLToPath } from 'url'
 import logger from 'morgan'
@@ -43,6 +43,7 @@ app.use(helmet({
     }
   }
 }))
+
 app.disable('x-powered-by')
 app.use(cookieParser())
 app.use(useragent.express())
@@ -52,7 +53,18 @@ app.use(useragent.express())
  */
 app.use('/mail', msgRouter)
 app.use('/api', apiRouter)
-app.use(express.static(process.env.DIR_PUBLIC!, { index: false }))
+
+app.use((req: Request, res: Response, next: NextFunction) => {
+  if (req.url === '/images/sign/email_sign.png') {
+
+    const headers = new Headers({
+      'cross-origin-resource-policy': '*'
+    })
+    res.setHeaders(headers)
+  }
+  next()
+}, express.static(process.env.DIR_PUBLIC!, { index: false }))
+
 app.use('*', indexRouter)
 
 export default app

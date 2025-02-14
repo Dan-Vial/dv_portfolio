@@ -66,13 +66,23 @@ function Footer() {
             <Link className="button button-disabled" to="#/conditions-générales-de-vente">Conditions générales de vente</Link>
           </nav>
         </div>
+
         <div>
-          <IconContext.Provider value={{ size: '1em', style: { verticalAlign: 'top' } }}>
-            <span>
-              <FaRegCopyright />
-            </span>
-          </IconContext.Provider> Dan VIAL 2024
+          <h3>Liens utiles</h3>
+          <div className='footer-nav'>
+            <a className="button" href="https://www.ardeche.fr/3317-a2c-ardeche-campus-connecte.htm" target="_blank" rel="noopener noreferrer">Lieu de formation A2C</a>
+            <a className="button" href="https://www.formapedia.com/" target="_blank" rel="noopener noreferrer">Formation Formapedia</a>
+            <a className="button" href="https://openclassrooms.com/fr/paths" target="_blank" rel="noopener noreferrer">Formation OpenClassrooms</a>
+          </div>
         </div>
+
+      </div>
+      <div>
+        <IconContext.Provider value={{ size: '1em', style: { verticalAlign: 'top' } }}>
+          <span>
+            <FaRegCopyright />
+          </span>
+        </IconContext.Provider> Dan VIAL 2024
       </div>
     </footer >
   )

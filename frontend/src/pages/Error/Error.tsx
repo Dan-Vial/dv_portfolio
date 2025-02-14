@@ -4,7 +4,7 @@ import { ContentPageError } from '@routes/Error-page'
 import { TitleBg } from '@components/titleBg/TitleBg'
 import { Section } from '@components/section/Section'
 
-function ErrorPage({ contentPageError, error }: { contentPageError: ContentPageError, error: { statusText?: string } }) {
+function ErrorPage({ contentPageError, error }: { contentPageError: ContentPageError, error: unknown }) {
   const { text, link } = contentPageError
   let count = 0
 
@@ -15,7 +15,7 @@ function ErrorPage({ contentPageError, error }: { contentPageError: ContentPageE
 
       <Section className={'section-content_col1'} num={count++} title={'Error 404'}>
         <p className="error-page-p">{text}</p>
-        <p>{error.statusText}</p>
+        <p>{(error as { statusText: string }).statusText}</p>
         <Link className="error-page-a" to={link.href}>{link.text}</Link>
       </Section>
 

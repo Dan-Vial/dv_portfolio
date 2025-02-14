@@ -32,7 +32,11 @@ for (const card of cards) {
 const routes = [
   {
     path: '/',
-    element: <Accueil />,
+    Component: Accueil,
+    // loader: async () => {
+    //   return fetch("/api/contact").then((res) => res.json());
+    // },
+    // element: <Accueil />,
     errorElement: <ErrorPage />,
   },
   {

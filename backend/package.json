@@ -7,9 +7,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "tsx watch ./src/bin/www.ts",
-    "preserve": "rimraf ./dist",
-    "serve": "tsc && rollup -c",
-    "postserve": "cd ./dist/ && node --enable-source-maps www.js",
+    "prebuild": "rimraf ./dist",
+    "build": "tsc && rollup -c",
+    "preview": "cd ./dist/ && node --enable-source-maps www.js",
     "lint": "eslint -c 'eslint.config.js' src"
   },
   "keywords": [],
@@ -17,9 +17,11 @@
   "license": "MIT",
   "description": "",
   "dependencies": {
+    "@google-cloud/recaptcha-enterprise": "^5.13.0",
     "bcrypt": "^5.1.1",
     "compression": "^1.7.4",
     "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "express-useragent": "^1.0.15",
